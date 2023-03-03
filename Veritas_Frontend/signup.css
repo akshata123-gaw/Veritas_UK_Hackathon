@@ -13,7 +13,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #4070f4;
+    background-color: #131313;
+    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
 }
 .form{
     position: absolute;
@@ -38,7 +39,7 @@
 header{
     font-size: 28px;
     font-weight: 600;
-    color: #232836;
+    color: #252424;
     text-align: center;
 }
 form{
@@ -80,12 +81,12 @@ form{
 }
 .field button{
     color: #fff;
-    background-color: #0171d3;
+    background-color: #3a3939;
     transition: all 0.3s ease;
     cursor: pointer;
 }
 .field button:hover{
-    background-color: #016dcb;
+    background-color: #252424;
 }
 .form-link{
     text-align: center;
@@ -98,7 +99,7 @@ form{
     color: #232836;
 }
 .form a{
-    color: #0171d3;
+    color: #252424;
     text-decoration: none;
 }
 .form-content a:hover{
@@ -128,12 +129,12 @@ form{
 }
 a.facebook{
     color: #fff;
-    background-color: #4267b2;
+    background-color: #252424;
 }
 a.facebook .facebook-icon{
     height: 28px;
     width: 28px;
-    color: #0171d3;
+    color: #252424;
     font-size: 20px;
     border-radius: 50%;
     display: flex;
