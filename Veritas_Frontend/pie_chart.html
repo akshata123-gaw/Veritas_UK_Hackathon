@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pie Chart Example</title>
+	<script>
+		window.onload = function() {
+			var canvas = document.getElementById("myCanvas");
+			var context = canvas.getContext("2d");
+
+			// Data for the chart
+			var data = [30, 50, 20];
+
+			// Colors for the chart
+			var colors = ["red", "blue", "yellow"];
+
+			// Draw the chart
+			var total = 0;
+			for (var i = 0; i < data.length; i++) {
+				total += data[i];
+			}
+			var startAngle = 0;
+			for (var i = 0; i < data.length; i++) {
+				var sliceAngle = 2 * Math.PI * data[i] / total;
+				context.fillStyle = colors[i];
+				context.beginPath();
+				context.moveTo(canvas.width / 2, canvas.height / 2);
+				context.arc(canvas.width / 2, canvas.height / 2, canvas.height / 2, startAngle, startAngle + sliceAngle);
+				context.closePath();
+				context.fill();
+				startAngle += sliceAngle;
+			}
+		};
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" width="200" height="200"></canvas>
+</body>
+</html>

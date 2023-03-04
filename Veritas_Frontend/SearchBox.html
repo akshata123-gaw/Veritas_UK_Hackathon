@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="selectedList">
+    Selected :
+  </div>
+  <div class="dropdown">
+    <button class="dropbtn">Dropdown</button>
+    <div class="dropdown-content">
+      <a href="#">Item 1</a>
+      <div id="sub1" class="sub-items">
+        <a id="1" href="#">Sub-item 1</a>
+        <a id="2" href="#">Sub-item 2</a>
+        <a id="3" href="#">Sub-item 3</a>
+      </div>
+      <br>
+      <a href="#">Item 2</a>
+      <div id="sub2" class="sub-items">
+        <a id="4" href="#">Sub-item 4</a>
+        <a id="5" href="#">Sub-item 5</a>
+        <a id="6" href="#">Sub-item 6</a>
+      </div>
+      <br>
+      <a href="#">Item 3</a>
+      <div id="sub3" class="sub-items">
+        <a id="7" href="#">Sub-item 7</a>
+        <a id="8" href="#">Sub-item 8</a>
+        <a id="9" href="#">Sub-item 9</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<script>
+  var dropdown = document.querySelector(".dropdown");
+  var items = dropdown.querySelectorAll(".sub-items > a");
+
+  var itemsList = [];
+
+  var list = document.querySelector(".selectedList");
+
+  function remove(id) {
+
+    var name1 = "";
+    for (i in itemsList) {
+      if (String(i.id) === String(id)) name1 = i.name;
+    }
+
+    if (id <= 3) {
+      var ele = document.getElementById("sub1");
+      ele.innerHTML += `<a id="${id}" href="#">Sub-item ${id}</a>`;
+    }
+
+    if (id <= 6) {
+      var ele = document.getElementById("sub2");
+      ele.innerHTML += `<a id="${id}" href="#">Sub-item ${id}</a>`;
+    }
+
+    if (id <= 9) {
+      var ele = document.getElementById("sub3");
+      ele.innerHTML += `<a id="${id}" href="#">Sub-item ${id}</a>`;
+    }
+
+    itemsList = itemsList.filter((item) => String(item.id) !== String(id));
+
+    var output = '';
+    for (var i = 0; i < itemsList.length; i++) {
+      output += "<span>" + itemsList[i].name + " </span>" + `<span onClick='remove(${itemsList[i].id})'>x</span><span> </span>`;
+    }
+
+    list.innerHTML = output;
+
+  }
+
+  items.forEach(function (item) {
+    item.addEventListener("click", function (event) {
+      event.preventDefault();
+      var selected = event.target;
+      item.remove();
+
+      itemsList.push({
+        id: event.target.id,
+        name: event.target.textContent
+      });
+      var output = '';
+      for (var i = 0; i < itemsList.length; i++) {
+        output += "<span>" + itemsList[i].name + " </span>" + `<span onClick='remove(${itemsList[i].id})'>x</span><span> </span>`;
+      }
+      list.innerHTML = output;
+    });
+  });
+</script>
+</html>
